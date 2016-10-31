@@ -35,7 +35,7 @@ public class ResellerAuthenticationHandler implements ClientAuthenticationHandle
                     case query:
                         form.set("client_id", resource.getClientId());
                         form.set("client_secret", clientSecret);
-                        if (resource instanceof ResellerResourceDetails && StringUtils.isEmpty(((ResellerResourceDetails)resource).getResourceUri())) {
+                        if (resource instanceof ResellerResourceDetails && !StringUtils.isEmpty(((ResellerResourceDetails)resource).getResourceUri())) {
                             form.set("resource", ((ResellerResourceDetails)resource).getResourceUri());
                         }
                         break;
