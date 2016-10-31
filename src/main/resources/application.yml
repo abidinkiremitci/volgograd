@@ -1,0 +1,11 @@
+security:
+    basic:
+        enabled: false
+
+config:
+    oauth2:
+        clientID:
+        clientSecret:
+        azureTokenUri:
+        resellerTokenUri:
+        resourceUri:
