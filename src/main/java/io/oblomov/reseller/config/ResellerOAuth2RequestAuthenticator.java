@@ -1,4 +1,4 @@
-package io.oblomov;
+package io.oblomov.reseller.config;
 
 import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.security.oauth2.client.DefaultOAuth2RequestAuthenticator;

@@ -1,14 +1,11 @@
-package io.oblomov;
+package io.oblomov.reseller.config;
 
 import org.springframework.http.HttpHeaders;
-import org.springframework.security.crypto.codec.Base64;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.oauth2.client.token.auth.ClientAuthenticationHandler;
 import org.springframework.security.oauth2.common.AuthenticationScheme;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
-
-import java.io.UnsupportedEncodingException;
 
 /**
  * Created by AbidinK on 31/10/2016.

@@ -1,5 +1,5 @@
 
-package io.oblomov.model;
+package io.oblomov.reseller.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -15,7 +15,7 @@ import java.util.Map;
         "method"
 })
 @lombok.Data
-public class Profiles {
+public class Addresses {
 
     @JsonProperty("href")
     public String href;

@@ -1,5 +1,5 @@
 
-package io.oblomov.model;
+package io.oblomov.reseller.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -11,19 +11,25 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "self",
-        "profiles",
-        "addresses"
+        "id",
+        "identity",
+        "is_test",
+        "links",
+        "object_type"
 })
 @lombok.Data
-public class Links {
+public class ResellerId {
 
-    @JsonProperty("self")
-    public Self self;
-    @JsonProperty("profiles")
-    public Profiles profiles;
-    @JsonProperty("addresses")
-    public Addresses addresses;
+    @JsonProperty("id")
+    public String id;
+    @JsonProperty("identity")
+    public Identity identity;
+    @JsonProperty("is_test")
+    public Boolean isTest;
+    @JsonProperty("links")
+    public Links links;
+    @JsonProperty("object_type")
+    public String objectType;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

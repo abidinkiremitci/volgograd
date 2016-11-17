@@ -1,9 +1,7 @@
-package io.oblomov;
+package io.oblomov.reseller.config;
 
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.oauth2.client.resource.OAuth2AccessDeniedException;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.oauth2.client.resource.UserApprovalRequiredException;
 import org.springframework.security.oauth2.client.resource.UserRedirectRequiredException;
@@ -13,14 +11,9 @@ import org.springframework.security.oauth2.client.token.OAuth2AccessTokenSupport
 import org.springframework.security.oauth2.common.AuthenticationScheme;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
-import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.ResponseExtractor;
-import org.springframework.web.client.RestClientException;
 
-import java.io.IOException;
-import java.net.URI;
 import java.util.Iterator;
 import java.util.List;
 
