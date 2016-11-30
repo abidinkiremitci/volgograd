@@ -1,4 +1,4 @@
-package io.oblomov.reseller.config;
+package io.oblomov.config;
 
 import lombok.Getter;
 import lombok.Setter;

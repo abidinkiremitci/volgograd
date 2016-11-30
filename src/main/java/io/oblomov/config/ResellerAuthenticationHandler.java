@@ -1,4 +1,4 @@
-package io.oblomov.reseller.config;
+package io.oblomov.config;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
@@ -32,8 +32,11 @@ public class ResellerAuthenticationHandler implements ClientAuthenticationHandle
                     case query:
                         form.set("client_id", resource.getClientId());
                         form.set("client_secret", clientSecret);
-                        if (resource instanceof ResellerResourceDetails && !StringUtils.isEmpty(((ResellerResourceDetails)resource).getResourceUri())) {
-                            form.set("resource", ((ResellerResourceDetails)resource).getResourceUri());
+                        if (resource instanceof ResellerResourceDetails) {
+                            ResellerResourceDetails resellerResource = (ResellerResourceDetails) resource;
+                            if (!StringUtils.isEmpty(resellerResource.getResourceUri())) {
+                                form.set("resource", resellerResource.getResourceUri());
+                            }
                         }
                         break;
                     default:
