@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.client.resource.UserRedirectRequiredE
 import org.springframework.security.oauth2.client.token.AccessTokenProvider;
 import org.springframework.security.oauth2.client.token.AccessTokenRequest;
 import org.springframework.security.oauth2.client.token.OAuth2AccessTokenSupport;
+import org.springframework.security.oauth2.client.token.auth.ClientAuthenticationHandler;
 import org.springframework.security.oauth2.common.AuthenticationScheme;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
@@ -23,6 +24,11 @@ import java.util.List;
 public class ResellerTokenProvider extends OAuth2AccessTokenSupport implements AccessTokenProvider {
 
     private OAuth2AccessToken clientToken;
+
+    public ResellerTokenProvider(ClientAuthenticationHandler clientAuthenticationHandler) {
+        this.setAuthenticationHandler(clientAuthenticationHandler);
+    }
+
 
     @Override
     public OAuth2AccessToken obtainAccessToken(OAuth2ProtectedResourceDetails details, AccessTokenRequest request) throws UserRedirectRequiredException, UserApprovalRequiredException, AccessDeniedException {

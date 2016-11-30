@@ -37,13 +37,9 @@ public class RestConfiguration {
 
     @Bean
     public OAuth2RestOperations azureRestTemplate() {
-        ResellerTokenProvider tokenProvider = new ResellerTokenProvider();
         OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(getAzureResource(), new DefaultOAuth2ClientContext());
-        ResellerAuthenticationHandler authenticationHandler = new ResellerAuthenticationHandler();
-        tokenProvider.setAuthenticationHandler(authenticationHandler);
-        ResellerOAuth2RequestAuthenticator authenticator = new ResellerOAuth2RequestAuthenticator();
-        restTemplate.setAuthenticator(authenticator);
-        restTemplate.setAccessTokenProvider(tokenProvider);
+        restTemplate.setAuthenticator(new ResellerOAuth2RequestAuthenticator());
+        restTemplate.setAccessTokenProvider(new ResellerTokenProvider(new ResellerAuthenticationHandler()));
         return restTemplate;
     }
 
