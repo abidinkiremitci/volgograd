@@ -16,9 +16,9 @@ import java.util.UUID;
  * Created by AbidinK on 23/10/16.
  */
 @Configuration
-public class RestConfiguration {
+public class MicrosoftResellerRestConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(RestConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(MicrosoftResellerRestConfiguration.class);
 
     @Value("${config.oauth2.azureTokenUri}")
     private String accessTokenUri;
@@ -35,22 +35,26 @@ public class RestConfiguration {
     @Value("${config.oauth2.resourceUri}")
     private String resourceUri;
 
+    @Value("${config.oauth2.apiVersion}")
+    private String apiVersion;
+
     @Bean
     public OAuth2RestOperations azureRestTemplate() {
         OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(getAzureResource(), new DefaultOAuth2ClientContext());
-        restTemplate.setAuthenticator(new ResellerOAuth2RequestAuthenticator());
-        restTemplate.setAccessTokenProvider(new ResellerTokenProvider(new ResellerAuthenticationHandler()));
+        restTemplate.setAuthenticator(new MicrosoftResellerOAuth2RequestAuthenticator());
+        restTemplate.setAccessTokenProvider(new MicrosoftResellerTokenProvider(new MicrosoftResellerAuthenticationHandler()));
         return restTemplate;
     }
 
     private OAuth2ProtectedResourceDetails getAzureResource() {
-        ResellerResourceDetails resource = new ResellerResourceDetails();
+        MicrosoftResellerResourceDetails resource = new MicrosoftResellerResourceDetails();
         resource.setId(UUID.randomUUID().toString());
         resource.setClientId(clientID);
         resource.setClientSecret(clientSecret);
         resource.setAccessTokenUri(resellerTokenUri);
         resource.setUserAuthorizationUri(accessTokenUri);
         resource.setResourceUri(resourceUri);
+        resource.setApiVersion(apiVersion);
         return resource;
     }
 }

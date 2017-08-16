@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.client.OAuth2RestOperations;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +45,13 @@ class UserController {
             result = exception.getMessage();
         }
         return result;
+    }
+
+    @RequestMapping("/get-all-customer")
+    public String getAllCustomer(){
+        String url = "https://api.partnercenter.microsoft.com"+"/v1/customers/"+"7fa4c066-bbce-4be1-a08d-91a9f8445001"+"/users HTTP/1.1";
+        ResponseEntity<String> response = azureRestTemplate.getForEntity(url,String.class);
+        return response.getBody();
     }
 
     @RequestMapping("/activation")

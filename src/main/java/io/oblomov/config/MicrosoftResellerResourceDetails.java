@@ -7,13 +7,17 @@ import org.springframework.security.oauth2.client.token.grant.redirect.AbstractR
 /**
  * Created by AbidinK on 31/10/2016.
  */
-public class ResellerResourceDetails extends AbstractRedirectResourceDetails {
+public class MicrosoftResellerResourceDetails extends AbstractRedirectResourceDetails {
 
     @Getter
     @Setter
     private String resourceUri;
 
-    public ResellerResourceDetails() {
+    @Getter
+    @Setter
+    private String apiVersion;
+
+    public MicrosoftResellerResourceDetails() {
         setGrantType("client_credentials");
     }
 }

@@ -21,11 +21,11 @@ import java.util.List;
 /**
  * Created by AbidinK on 31/10/2016.
  */
-public class ResellerTokenProvider extends OAuth2AccessTokenSupport implements AccessTokenProvider {
+public class MicrosoftResellerTokenProvider extends OAuth2AccessTokenSupport implements AccessTokenProvider {
 
     private OAuth2AccessToken clientToken;
 
-    public ResellerTokenProvider(ClientAuthenticationHandler clientAuthenticationHandler) {
+    public MicrosoftResellerTokenProvider(ClientAuthenticationHandler clientAuthenticationHandler) {
         this.setAuthenticationHandler(clientAuthenticationHandler);
     }
 
@@ -33,7 +33,7 @@ public class ResellerTokenProvider extends OAuth2AccessTokenSupport implements A
     @Override
     public OAuth2AccessToken obtainAccessToken(OAuth2ProtectedResourceDetails details, AccessTokenRequest request) throws UserRedirectRequiredException, UserApprovalRequiredException, AccessDeniedException {
 
-        ResellerResourceDetails resource = (ResellerResourceDetails)details;
+        MicrosoftResellerResourceDetails resource = (MicrosoftResellerResourceDetails)details;
         MultiValueMap<String, String> form = getParametersForTokenRequest(resource);
         String userTokerUri = resource.getUserAuthorizationUri();
         String accessTokenUri= resource.getAccessTokenUri();
@@ -49,7 +49,7 @@ public class ResellerTokenProvider extends OAuth2AccessTokenSupport implements A
         return retrieveToken(request, resource, form, headers);
     }
 
-    private MultiValueMap<String, String> getParametersForTokenRequest(ResellerResourceDetails resource) {
+    private MultiValueMap<String, String> getParametersForTokenRequest(MicrosoftResellerResourceDetails resource) {
 
         MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
         form.set("grant_type", "client_credentials");
@@ -78,7 +78,7 @@ public class ResellerTokenProvider extends OAuth2AccessTokenSupport implements A
 
     @Override
     public boolean supportsResource(OAuth2ProtectedResourceDetails resource) {
-        return resource instanceof ResellerResourceDetails
+        return resource instanceof MicrosoftResellerResourceDetails
                 && "client_credentials".equals(resource.getGrantType());
     }
 

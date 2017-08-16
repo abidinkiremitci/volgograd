@@ -10,7 +10,7 @@ import org.springframework.util.StringUtils;
 /**
  * Created by AbidinK on 31/10/2016.
  */
-public class ResellerAuthenticationHandler implements ClientAuthenticationHandler {
+public class MicrosoftResellerAuthenticationHandler implements ClientAuthenticationHandler {
 
     public void authenticateTokenRequest(OAuth2ProtectedResourceDetails resource, MultiValueMap<String, String> form,
                                          HttpHeaders headers) {
@@ -32,18 +32,14 @@ public class ResellerAuthenticationHandler implements ClientAuthenticationHandle
                     case query:
                         form.set("client_id", resource.getClientId());
                         form.set("client_secret", clientSecret);
-                        if (resource instanceof ResellerResourceDetails) {
-                            ResellerResourceDetails resellerResource = (ResellerResourceDetails) resource;
-                            if (!StringUtils.isEmpty(resellerResource.getResourceUri())) {
-                                form.set("resource", resellerResource.getResourceUri());
-                            }
+                        if (resource instanceof MicrosoftResellerResourceDetails && !StringUtils.isEmpty(((MicrosoftResellerResourceDetails) resource).getResourceUri())) {
+                            form.set("resource", ((MicrosoftResellerResourceDetails) resource).getResourceUri());
                         }
                         break;
                     default:
                         throw new IllegalStateException("Reseller authentication handler doesn't know how to handle scheme: " + scheme);
                 }
-            }
-            catch (IllegalStateException e) {
+            } catch (IllegalStateException e) {
                 throw new IllegalStateException(e);
             }
         }
