@@ -49,9 +49,14 @@ class UserController {
 
     @RequestMapping("/get-all-customer")
     public String getAllCustomer(){
-        String url = "https://api.partnercenter.microsoft.com"+"/v1/customers/"+"7fa4c066-bbce-4be1-a08d-91a9f8445001"+"/users HTTP/1.1";
-        ResponseEntity<String> response = azureRestTemplate.getForEntity(url,String.class);
-        return response.getBody();
+        try {
+            String url = "https://api.partnercenter.microsoft.com/v1/customers?size=40";
+            ResponseEntity<String> response = azureRestTemplate.getForEntity(url, String.class);
+            return response.getBody();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return null;
+        }
     }
 
     @RequestMapping("/activation")

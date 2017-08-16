@@ -34,25 +34,31 @@ public class MicrosoftResellerTokenProvider extends OAuth2AccessTokenSupport imp
     public OAuth2AccessToken obtainAccessToken(OAuth2ProtectedResourceDetails details, AccessTokenRequest request) throws UserRedirectRequiredException, UserApprovalRequiredException, AccessDeniedException {
 
         MicrosoftResellerResourceDetails resource = (MicrosoftResellerResourceDetails)details;
-        MultiValueMap<String, String> form = getParametersForTokenRequest(resource);
         String userTokerUri = resource.getUserAuthorizationUri();
         String accessTokenUri= resource.getAccessTokenUri();
+        MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
         if (clientToken == null || clientToken.isExpired()) {
+            configureParametersForTokenRequest(resource,form);
             resource.setClientAuthenticationScheme(AuthenticationScheme.query);
             resource.setAccessTokenUri(userTokerUri);
             clientToken = retrieveToken(request, resource, form, new HttpHeaders());
         }
         resource.setClientAuthenticationScheme(AuthenticationScheme.header);
         resource.setAccessTokenUri(accessTokenUri);
+        configureParametersForTokenRequest(resource,form);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization",String.format("%s %s", clientToken.getTokenType(),clientToken.getValue()));
         return retrieveToken(request, resource, form, headers);
     }
 
-    private MultiValueMap<String, String> getParametersForTokenRequest(MicrosoftResellerResourceDetails resource) {
+    private void configureParametersForTokenRequest(MicrosoftResellerResourceDetails resource, MultiValueMap<String, String> form) {
 
-        MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
-        form.set("grant_type", "client_credentials");
+        form.clear();
+        if(this.clientToken==null) {
+            form.set("grant_type", "client_credentials");
+        } else {
+            form.set("grant_type", "jwt_token");
+        }
 
         if (resource.isScoped()) {
 
@@ -71,9 +77,6 @@ public class MicrosoftResellerTokenProvider extends OAuth2AccessTokenSupport imp
 
             form.set("scope", builder.toString());
         }
-
-        return form;
-
     }
 
     @Override

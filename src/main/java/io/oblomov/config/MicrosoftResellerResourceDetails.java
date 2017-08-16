@@ -18,6 +18,6 @@ public class MicrosoftResellerResourceDetails extends AbstractRedirectResourceDe
     private String apiVersion;
 
     public MicrosoftResellerResourceDetails() {
-        setGrantType("client_credentials");
+        setGrantType("jwt_token");
     }
 }
