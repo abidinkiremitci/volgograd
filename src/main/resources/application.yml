@@ -6,6 +6,15 @@ config:
     oauth2:
         clientID:
         clientSecret:
-        azureTokenUri:
-        resellerTokenUri:
-        resourceUri:
+        reseller-tid:
+        azureTokenUri: https://login.windows.net/${reseller-tid}/oauth2/token
+        resellerTokenUri: https://api.partnercenter.microsoft.com/generatetoken
+        resourceUri: https://graph.windows.net
+        apiVersion: 2015-03-31
+    client:
+        baseUri: https://api.partnercenter.microsoft.com
+
+logging:
+    level:
+        ROOT: WARN
+        io.oblomov: DEBUG
