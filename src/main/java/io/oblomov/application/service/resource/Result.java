@@ -1,8 +1,5 @@
-package io.oblomov.service.model;
+package io.oblomov.application.service.resource;
 
-/**
- * Created by AbidinK on 27/11/2016.
- */
 @lombok.Data
 public class Result {
     private int code;

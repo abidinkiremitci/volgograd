@@ -1,4 +1,4 @@
-package io.oblomov.config;
+package io.oblomov.infra.rest.config.custom.microsoftreseller;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.access.AccessDeniedException;
@@ -18,9 +18,6 @@ import org.springframework.util.MultiValueMap;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by AbidinK on 31/10/2016.
- */
 public class MicrosoftResellerTokenProvider extends OAuth2AccessTokenSupport implements AccessTokenProvider {
 
     private OAuth2AccessToken clientToken;
@@ -28,7 +25,6 @@ public class MicrosoftResellerTokenProvider extends OAuth2AccessTokenSupport imp
     public MicrosoftResellerTokenProvider(ClientAuthenticationHandler clientAuthenticationHandler) {
         this.setAuthenticationHandler(clientAuthenticationHandler);
     }
-
 
     @Override
     public OAuth2AccessToken obtainAccessToken(OAuth2ProtectedResourceDetails details, AccessTokenRequest request) throws UserRedirectRequiredException, UserApprovalRequiredException, AccessDeniedException {

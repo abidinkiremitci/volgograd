@@ -1,12 +1,9 @@
-package io.oblomov.config;
+package io.oblomov.infra.rest.config.custom.microsoftreseller;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.oauth2.client.token.grant.redirect.AbstractRedirectResourceDetails;
 
-/**
- * Created by AbidinK on 31/10/2016.
- */
 public class MicrosoftResellerResourceDetails extends AbstractRedirectResourceDetails {
 
     @Getter

@@ -1,4 +1,4 @@
-package io.oblomov.config;
+package io.oblomov.infra.rest.config.custom.microsoftreseller;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
@@ -7,9 +7,6 @@ import org.springframework.security.oauth2.common.AuthenticationScheme;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 
-/**
- * Created by AbidinK on 31/10/2016.
- */
 public class MicrosoftResellerAuthenticationHandler implements ClientAuthenticationHandler {
 
     public void authenticateTokenRequest(OAuth2ProtectedResourceDetails resource, MultiValueMap<String, String> form,

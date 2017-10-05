@@ -1,4 +1,4 @@
-package io.oblomov.config;
+package io.oblomov.infra.rest.config.custom.microsoftreseller;
 
 import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.security.oauth2.client.DefaultOAuth2RequestAuthenticator;
@@ -7,9 +7,6 @@ import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResour
 
 import java.util.UUID;
 
-/**
- * Created by AbidinK on 17/11/2016.
- */
 public class MicrosoftResellerOAuth2RequestAuthenticator extends DefaultOAuth2RequestAuthenticator {
 
     @Override
