@@ -24,13 +24,13 @@ import java.util.Map;
 public class ResourceLinks {
 
     @JsonProperty("self")
-    ResourceLink self;
+    private ResourceLink self;
 
     @JsonProperty("next")
-    ResourceLink next;
+    private ResourceLink next;
 
     @JsonProperty("previous")
-    ResourceLink previous;
+    private ResourceLink previous;
 
     @JsonProperty("attributes")
     private ResourceAttributes attributes;

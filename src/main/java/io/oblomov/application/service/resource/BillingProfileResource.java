@@ -31,34 +31,34 @@ import java.util.Map;
 public class BillingProfileResource {
 
     @JsonProperty("id")
-    public String id;
+    private String id;
 
     @JsonProperty("firstName")
-    public String firstName;
+    private String firstName;
 
     @JsonProperty("lastName")
-    public String lastName;
+    private String lastName;
 
     @JsonProperty("email")
-    public String email;
+    private String email;
 
     @JsonProperty("culture")
-    public String culture;
+    private String culture;
 
     @JsonProperty("language")
-    public String language;
+    private String language;
 
     @JsonProperty("companyName")
-    public String companyName;
+    private String companyName;
 
     @JsonProperty("defaultAddress")
-    public AddressResource defaultAddress;
+    private AddressResource defaultAddress;
 
     @JsonProperty("links")
-    public ResourceLinks links;
+    private ResourceLinks links;
 
     @JsonProperty("attributes")
-    public ResourceAttributes attributes;
+    private ResourceAttributes attributes;
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();

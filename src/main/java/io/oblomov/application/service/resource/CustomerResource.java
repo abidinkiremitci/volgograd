@@ -54,10 +54,10 @@ public class CustomerResource {
     private UserCredentialsResource userCredentials;
 
     @JsonProperty("customDomains")
-    List<String> customDomains = new ArrayList();
+    private List<String> customDomains = new ArrayList();
 
     @JsonProperty("associatedPartnerId")
-    String associatedPartnerId;
+    private String associatedPartnerId;
 
     @JsonProperty("links")
     private ResourceLinks links;
@@ -66,10 +66,10 @@ public class CustomerResource {
     private ResourceAttributes attributes;
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    public  Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonAnyGetter
-    private Map<String, Object> getAdditionalProperties() {
+    public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }
 

@@ -31,37 +31,37 @@ import java.util.Map;
 public class AddressResource {
 
     @JsonProperty("addressLine1")
-    public String addressLine1; // (1, 200)
+    private String addressLine1; // (1, 200)
 
     @JsonProperty("addressLine2")
-    public String addressLine2; // (0, 200)
+    private String addressLine2; // (0, 200)
 
     @JsonProperty("city")
-    public String city;
+    private String city;
 
     @JsonProperty("state")
-    public String state; // (0, 2)
+    private String state; // (0, 2)
 
     @JsonProperty("postalCode")
-    public String postalCode;
+    private String postalCode;
 
     @JsonProperty("country")
-    public String country;
+    private String country;
 
     @JsonProperty("region")
-    public String region;
+    private String region;
 
     @JsonProperty("firstName")
-    public String firstName;
+    private String firstName;
 
     @JsonProperty("lastName")
-    public String lastName;
+    private String lastName;
 
     @JsonProperty("phoneNumber")
-    public String phoneNumber;
+    private String phoneNumber;
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {

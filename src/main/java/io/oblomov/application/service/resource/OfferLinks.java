@@ -8,29 +8,32 @@ import lombok.NoArgsConstructor;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "uri",
-        "method",
-        "headers"
+        "self",
+        "next",
+        "previous",
+        "learnMore"
 })
 @Data
 @NoArgsConstructor
 @XmlRootElement
 @XmlAccessorType
-public class ResourceLink {
+public class OfferLinks {
 
-    @JsonProperty("uri")
-    private String uri;
+    @JsonProperty("self")
+    private ResourceLink self;
 
-    @JsonProperty("method")
-    private String method;
+    @JsonProperty("next")
+    private ResourceLink next;
 
-    @JsonProperty("headers")
-    private List<Object> headers = null;
+    @JsonProperty("previous")
+    private ResourceLink previous;
+
+    @JsonProperty("learnMore")
+    private ResourceLink learnMore;
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -46,10 +49,11 @@ public class ResourceLink {
     }
 
     @Builder
-    public ResourceLink(String uri, String method, List<Object> headers, Map<String, Object> additionalProperties) {
-        this.uri = uri;
-        this.method = method;
-        this.headers = headers;
+    public OfferLinks(ResourceLink self, ResourceLink next, ResourceLink previous, ResourceLink learnMore, Map<String, Object> additionalProperties) {
+        this.self = self;
+        this.next = next;
+        this.previous = previous;
+        this.learnMore = learnMore;
         this.additionalProperties = additionalProperties;
     }
 }

@@ -23,19 +23,19 @@ import java.util.Map;
 @NoArgsConstructor
 @XmlRootElement
 @XmlAccessorType
-public class SearchCustomerResource {
+public class CollectionResource<T> {
 
     @JsonProperty("totalCount")
-    int totalCount;
+    private int totalCount;
 
     @JsonProperty("items")
-    List<CustomerResource> items;
+    private List<T> items;
 
     @JsonProperty("links")
-    public ResourceLinks links;
+    private ResourceLinks links;
 
     @JsonProperty("attributes")
-    public ResourceAttributes attributes;
+    private ResourceAttributes attributes;
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -51,8 +51,8 @@ public class SearchCustomerResource {
     }
 
     @Builder
-    public SearchCustomerResource(int totalCount, List<CustomerResource> items, ResourceLinks links,
-                                  ResourceAttributes attributes, Map<String, Object> additionalProperties) {
+    public CollectionResource(int totalCount, List<T> items, ResourceLinks links,
+                              ResourceAttributes attributes, Map<String, Object> additionalProperties) {
         this.totalCount = totalCount;
         this.items = items;
         this.links = links;

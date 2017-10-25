@@ -23,10 +23,10 @@ import java.util.Map;
 public class ResourceAttributes {
 
     @JsonProperty("etag")
-    public String etag;
+    private String etag;
 
     @JsonProperty("objectType")
-    public String objectType;
+    private String objectType;
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();

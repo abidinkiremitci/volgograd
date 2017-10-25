@@ -8,29 +8,20 @@ import lombok.NoArgsConstructor;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "uri",
-        "method",
-        "headers"
+        "subscription"
 })
 @Data
 @NoArgsConstructor
 @XmlRootElement
 @XmlAccessorType
-public class ResourceLink {
+public class OrderLineItemLinks {
 
-    @JsonProperty("uri")
-    private String uri;
-
-    @JsonProperty("method")
-    private String method;
-
-    @JsonProperty("headers")
-    private List<Object> headers = null;
+    @JsonProperty("subscription")
+    ResourceLink subscription;
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -46,10 +37,8 @@ public class ResourceLink {
     }
 
     @Builder
-    public ResourceLink(String uri, String method, List<Object> headers, Map<String, Object> additionalProperties) {
-        this.uri = uri;
-        this.method = method;
-        this.headers = headers;
+    public OrderLineItemLinks(ResourceLink subscription, Map<String, Object> additionalProperties) {
+        this.subscription = subscription;
         this.additionalProperties = additionalProperties;
     }
 }

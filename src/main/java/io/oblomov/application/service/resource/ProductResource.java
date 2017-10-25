@@ -1,37 +1,32 @@
 package io.oblomov.application.service.resource;
 
 import com.fasterxml.jackson.annotation.*;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "uri",
-        "method",
-        "headers"
+        "id",
+        "name",
+        "unit"
 })
 @Data
 @NoArgsConstructor
 @XmlRootElement
 @XmlAccessorType
-public class ResourceLink {
+public class ProductResource {
 
-    @JsonProperty("uri")
-    private String uri;
-
-    @JsonProperty("method")
-    private String method;
-
-    @JsonProperty("headers")
-    private List<Object> headers = null;
-
+    @JsonProperty("id")
+    private String id;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("unit")
+    private String unit;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -45,11 +40,4 @@ public class ResourceLink {
         this.additionalProperties.put(name, value);
     }
 
-    @Builder
-    public ResourceLink(String uri, String method, List<Object> headers, Map<String, Object> additionalProperties) {
-        this.uri = uri;
-        this.method = method;
-        this.headers = headers;
-        this.additionalProperties = additionalProperties;
-    }
 }

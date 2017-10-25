@@ -24,19 +24,19 @@ import java.util.Map;
 public class CompanyProfileResource {
 
     @JsonProperty("tenantId")
-    public String tenantId;
+    private String tenantId;
 
     @JsonProperty("domain")
-    public String domain;
+    private String domain;
 
     @JsonProperty("companyName")
-    public String companyName;
+    private String companyName;
 
     @JsonProperty("links")
-    public ResourceLinks links;
+    private ResourceLinks links;
 
     @JsonProperty("attributes")
-    public ResourceAttributes attributes;
+    private ResourceAttributes attributes;
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();

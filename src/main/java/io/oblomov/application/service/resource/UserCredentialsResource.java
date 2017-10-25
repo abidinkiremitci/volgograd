@@ -22,10 +22,10 @@ import java.util.Map;
 public class UserCredentialsResource {
 
     @JsonProperty("userName")
-    String userName;
+    private String userName;
 
     @JsonProperty("password")
-    SecureStringResource password;
+    private String password;
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -41,7 +41,7 @@ public class UserCredentialsResource {
     }
 
     @Builder
-    public UserCredentialsResource(String userName, SecureStringResource password, Map<String, Object> additionalProperties) {
+    public UserCredentialsResource(String userName, String password, Map<String, Object> additionalProperties) {
         this.userName = userName;
         this.password = password;
         this.additionalProperties = additionalProperties;
